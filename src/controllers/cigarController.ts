@@ -2,7 +2,6 @@ import { Request, Response } from 'express';
 import { db } from '../db';
 import { RowDataPacket, ResultSetHeader } from 'mysql2';
 
-// GET /api/cigars
 export const getAllCigars = (req: Request, res: Response) => {
   db.query('SELECT * FROM cigars', (err, results) => {
     if (err) return res.status(500).json({ error: err });
@@ -11,7 +10,6 @@ export const getAllCigars = (req: Request, res: Response) => {
   });
 };
 
-// GET /api/cigars/:id
 export const getCigarById = (req: Request, res: Response) => {
   const cigarId = req.params.id;
   db.query('SELECT * FROM cigars WHERE id = ?', [cigarId], (err, results) => {
@@ -23,7 +21,6 @@ export const getCigarById = (req: Request, res: Response) => {
   });
 };
 
-// POST /api/cigars
 export const createCigar = (req: Request, res: Response) => {
   const { name, brand, strength, price } = req.body;
   const query =
@@ -38,7 +35,6 @@ export const createCigar = (req: Request, res: Response) => {
   });
 };
 
-// PUT /api/cigars/:id
 export const updateCigar = (req: Request, res: Response) => {
   const cigarId = req.params.id;
   const { name, brand, strength, price } = req.body;
@@ -50,7 +46,6 @@ export const updateCigar = (req: Request, res: Response) => {
   });
 };
 
-// DELETE /api/cigars/:id
 export const deleteCigar = (req: Request, res: Response) => {
   const cigarId = req.params.id;
   db.query('DELETE FROM cigars WHERE id = ?', [cigarId], (err) => {
@@ -58,3 +53,4 @@ export const deleteCigar = (req: Request, res: Response) => {
     res.json({ message: 'Cigar deleted' });
   });
 };
+
