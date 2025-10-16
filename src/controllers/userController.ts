@@ -2,7 +2,6 @@ import { Request, Response } from 'express';
 import { db } from '../db';
 import { RowDataPacket, ResultSetHeader } from 'mysql2';
 
-// CREATE
 export const createUser = (req: Request, res: Response) => {
   const { name, email } = req.body;
   const query = 'INSERT INTO users (name, email) VALUES (?, ?)';
@@ -13,7 +12,6 @@ export const createUser = (req: Request, res: Response) => {
   });
 };
 
-// READ ALL
 export const getAllUsers = (req: Request, res: Response) => {
   db.query('SELECT * FROM users', (err, results) => {
     if (err) return res.status(500).json({ error: err });
@@ -22,7 +20,6 @@ export const getAllUsers = (req: Request, res: Response) => {
   });
 };
 
-// READ BY ID
 export const getUserById = (req: Request, res: Response) => {
   const userId = req.params.id;
   db.query('SELECT * FROM users WHERE id = ?', [userId], (err, results) => {
@@ -33,7 +30,6 @@ export const getUserById = (req: Request, res: Response) => {
   });
 };
 
-// UPDATE
 export const updateUser = (req: Request, res: Response) => {
   const userId = req.params.id;
   const { name, email } = req.body;
@@ -44,7 +40,6 @@ export const updateUser = (req: Request, res: Response) => {
   });
 };
 
-// DELETE
 export const deleteUser = (req: Request, res: Response) => {
   const userId = req.params.id;
   db.query('DELETE FROM users WHERE id = ?', [userId], (err) => {
@@ -52,3 +47,4 @@ export const deleteUser = (req: Request, res: Response) => {
     res.json({ message: 'User deleted' });
   });
 };
+
