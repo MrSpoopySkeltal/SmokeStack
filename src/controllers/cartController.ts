@@ -2,7 +2,6 @@ import { Request, Response } from 'express';
 import { db } from '../db';
 import { RowDataPacket, ResultSetHeader } from 'mysql2';
 
-// GET /api/cart/:userId
 export const getCartItems = (req: Request, res: Response) => {
   const userId = req.params.userId;
   const query = `
@@ -18,7 +17,6 @@ export const getCartItems = (req: Request, res: Response) => {
   });
 };
 
-// POST /api/cart
 export const addToCart = (req: Request, res: Response) => {
   const { user_id, cigar_id } = req.body;
 
@@ -34,7 +32,6 @@ export const addToCart = (req: Request, res: Response) => {
   });
 };
 
-// DELETE /api/cart/:id
 export const removeFromCart = (req: Request, res: Response) => {
   const cartItemId = req.params.id;
   db.query('DELETE FROM cart WHERE id = ?', [cartItemId], (err) => {
@@ -42,7 +39,7 @@ export const removeFromCart = (req: Request, res: Response) => {
     res.json({ message: 'Cigar removed from cart' });
   });
 };
-// PUT /api/cart/:id
+
 export const updateCartItem = (req: Request, res: Response) => {
   const cartItemId = req.params.id;
   const { quantity } = req.body;
@@ -53,5 +50,6 @@ export const updateCartItem = (req: Request, res: Response) => {
     res.json({ message: 'Cart item quantity updated' });
   });
 };
+
 
 
