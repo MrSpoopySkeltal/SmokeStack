@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2>Cigar Inventory</h2>
+  <button class="btn btn-primary" routerLink="/cigars/new">Add New</button>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Brand</th>
+      <th>Strength</th>
+      <th>Price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cigar of cigars">
+      <td>{{ cigar.name }}</td>
+      <td>{{ cigar.brand }}</td>
+      <td>{{ cigar.strength }}</td>
+      <td>\${{ cigar.price }}</td>
+      <td>
+        <button class="btn btn-sm btn-info me-2" (click)="viewCigar(cigar.id!)">View</button>
+        <button class="btn btn-sm btn-warning me-2" (click)="editCigar(cigar.id!)">Edit</button>
+        <button class="btn btn-sm btn-danger" (click)="deleteCigar(cigar.id!)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,33 @@
+<div class="card p-4">
+  <h3>{{ isEdit ? 'Edit Cigar' : 'Add New Cigar' }}</h3>
+
+  <form (ngSubmit)="onSubmit()" #cigarForm="ngForm">
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input type="text" class="form-control" required [(ngModel)]="cigar.name" name="name" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Brand</label>
+      <input type="text" class="form-control" required [(ngModel)]="cigar.brand" name="brand" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Strength</label>
+      <select class="form-select" [(ngModel)]="cigar.strength" name="strength" required>
+        <option value="">Select Strength</option>
+        <option>Mild</option>
+        <option>Medium</option>
+        <option>Full</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Price</label>
+      <input type="number" class="form-control" required [(ngModel)]="cigar.price" name="price" />
+    </div>
+
+    <button type="submit" class="btn btn-success me-2">{{ isEdit ? 'Update' : 'Create' }}</button>
+    <button type="button" class="btn btn-secondary" routerLink="/">Cancel</button>
+  </form>
+</div>

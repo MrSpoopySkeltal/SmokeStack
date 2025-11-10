@@ -1,0 +1,7 @@
+<div *ngIf="cigar" class="card p-4">
+  <h3>{{ cigar.name }}</h3>
+  <p><strong>Brand:</strong> {{ cigar.brand }}</p>
+  <p><strong>Strength:</strong> {{ cigar.strength }}</p>
+  <p><strong>Price:</strong> ${{ cigar.price }}</p>
+  <button class="btn btn-secondary" (click)="back()">Back</button>
+</div>
